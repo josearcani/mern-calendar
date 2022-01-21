@@ -24,12 +24,16 @@ router.post('/',[
 ], createEvent);
 
 router.put('/:id',[
+  check('id', 'No es un id válido').isMongoId(),
   check('title', 'El título es obligatorio').notEmpty(),
   check('start', 'Fecha de inicio es obligatoria').custom(isDate),
   check('end', 'Fecha de finalización es obligatoria').custom(isDate),
   validateFields
 ], updateEvent);
 
-router.delete('/:id', deleteEvent);
+router.delete('/:id',[
+  check('id', 'No es un id válido').isMongoId(),
+  validateFields
+], deleteEvent);
 
 module.exports = router;

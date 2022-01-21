@@ -2,13 +2,18 @@ const Event = require('../models/Event');
 
 const getEvents = async (req, res) => {
 
-  const eventDb = await Event.find()
-                            .populate('user', 'name');
+  // const eventDb = await Event.find()
+  //                           .populate('user', 'name');
                             // .populate('user', 'name email');
+
+  const [ total, eventDb ] = await Promise.all([
+    Event.countDocuments(),
+    Event.find().populate('user', 'name')
+  ]);
   
   res.json({
     ok: true,
-    msg: 'get all events',
+    total,
     event: eventDb,
   })
 }
