@@ -4,7 +4,7 @@ const User = require('../models/User');
 const { generateJWT } = require('../helpers/jwt');
 
 const createUser = async (req = request, res = response) => {
-  const { name, email, password } = req.body;
+  const { email, password } = req.body;
 
   try {
 
@@ -13,7 +13,7 @@ const createUser = async (req = request, res = response) => {
     if (user) {
       return res.status(400).json({
         ok: false,
-        mkg: 'Un usuario existe con ese correo',
+        msg: 'Un usuario existe con ese correo',
       })
     }
 
@@ -94,6 +94,8 @@ const renewToken = async (req, res = response) => {
 
   res.json({
     ok: true,
+    uid,
+    name,
     token
   })
 }
