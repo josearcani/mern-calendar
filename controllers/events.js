@@ -14,7 +14,7 @@ const getEvents = async (req, res) => {
   res.json({
     ok: true,
     total,
-    event: eventDb,
+    events: eventDb,
   })
 }
 
@@ -28,7 +28,7 @@ const createEvent = async (req, res) => {
     const eventDb = await event.save();
     res.json({
       ok: true,
-      msg: 'create event',
+      msg: 'Evento creado',
       event: eventDb,
     })
     
@@ -78,7 +78,7 @@ const updateEvent = async (req, res) => {
 
     res.json({
       ok: true,
-      msg: 'update event',
+      msg: 'Evento actualizado',
       event: updatedEvent
     })
 
@@ -120,7 +120,7 @@ const deleteEvent = async (req, res) => {
 
     res.json({
       ok: true,
-      msg: 'delete event',
+      msg: 'Evento eliminado',
       event: deletedEvent
     })
 

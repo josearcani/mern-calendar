@@ -2,7 +2,7 @@ const moment = require('moment');
 
 const isDate = (value) => {
 
-  if (isNaN(value) || typeof value === 'string') return false;
+  if (!value) return false;
 
   const date = moment(value);
 
